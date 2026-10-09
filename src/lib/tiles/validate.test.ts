@@ -65,7 +65,7 @@ describe('validateTiles', () => {
 
 	it('groups the demonstration tool alongside portfolio tiles', () => {
 		expect(homeTiles.map((tile) => tile.id)).toEqual(
-			expect.arrayContaining(['intro', 'projects', 'tools', 'contact', 'theme'])
+			expect.arrayContaining(['intro', 'projects', 'tech-stack', 'email', 'github', 'blog', 'tools', 'theme'])
 		);
 		const tools = homeTiles.find((tile) => tile.id === 'tools');
 		expect(tools?.type).toBe('folder');

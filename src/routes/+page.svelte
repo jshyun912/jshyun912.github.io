@@ -82,11 +82,10 @@
 	<meta name="description" content="포트폴리오와 문제풀이 도구를 모은 메트로 스타일 시작 화면" />
 </svelte:head>
 
-<main class="site-shell">
+<main class="site-shell" class:home-screen={!$activeFolder}>
 	<header class="site-header">
 		<p class="site-kicker">jshyun912 / portfolio</p>
-		<h1>start</h1>
-		<p class="site-subtitle">소개와 작업, 문제풀이 도구를 한곳에 모았습니다.</p>
+		<h1>환영합니다!</h1>
 	</header>
 
 	<div class="view-viewport">

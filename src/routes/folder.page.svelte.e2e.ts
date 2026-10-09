@@ -40,8 +40,10 @@ test('browser back from a tool returns to its folder', async ({ page }) => {
 
 test('folder navigation restores keyboard focus', async ({ page }) => {
 	await page.goto('/');
-	await page.keyboard.press('Tab');
-	await expect(page.getByRole('button', { name: '문제풀이 도구' })).toBeFocused();
+	for (const id of ['email', 'github', 'blog', 'tools']) {
+		await page.keyboard.press('Tab');
+		await expect(page.locator(`[data-tile-id="${id}"]`)).toBeFocused();
+	}
 	await page.keyboard.press('Enter');
 	await expect(page.getByRole('button', { name: '← start' })).toBeFocused();
 	await page.keyboard.press('Enter');

@@ -14,15 +14,48 @@ export const homeTiles: Tile[] = [
 		type: 'standard',
 		id: 'projects',
 		title: '프로젝트',
-		size: 'medium',
+		size: 'wide',
 		color: 'blue',
 		description: '작업물을 추가할 공간입니다.'
+	},
+	{
+		type: 'standard',
+		id: 'tech-stack',
+		title: '기술 스택',
+		size: 'wide',
+		color: 'slate'
+	},
+	{
+		type: 'standard',
+		id: 'email',
+		title: 'dev.hyunjaesung@gmail.com',
+		size: 'wide',
+		color: 'violet',
+		href: 'mailto:dev.hyunjaesung@gmail.com'
+	},
+	{
+		type: 'standard',
+		id: 'github',
+		title: 'GitHub',
+		size: 'medium',
+		color: 'slate',
+		href: 'https://github.com/jshyun912',
+		external: true
+	},
+	{
+		type: 'standard',
+		id: 'blog',
+		title: '블로그 이동',
+		size: 'medium',
+		color: 'blue',
+		href: 'https://velog.io/@jshyun912/',
+		external: true
 	},
 	{
 		type: 'folder',
 		id: 'tools',
 		title: '문제풀이 도구',
-		size: 'wide',
+		size: 'medium',
 		color: 'teal',
 		children: [
 			{
@@ -35,14 +68,6 @@ export const homeTiles: Tile[] = [
 				description: '글자, 단어, 줄 수를 확인합니다.'
 			}
 		]
-	},
-	{
-		type: 'standard',
-		id: 'contact',
-		title: '연락처',
-		size: 'medium',
-		color: 'violet',
-		description: '공개할 연락 방법을 여기에 추가해 주세요.'
 	},
 	{
 		type: 'action',
