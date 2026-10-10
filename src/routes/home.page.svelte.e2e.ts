@@ -16,7 +16,7 @@ test('home shows portfolio tiles and switches theme persistently', async ({ page
 
 test('keyboard can reach and activate tile actions', async ({ page }) => {
 	await page.goto('/', { waitUntil: 'networkidle' });
-	for (const id of ['email', 'github', 'blog', 'tools']) {
+	for (const id of ['intro', 'projects', 'tech-stack', 'email', 'github', 'blog', 'tools']) {
 		await page.keyboard.press('Tab');
 		await expect(page.locator(`[data-tile-id="${id}"]`)).toBeFocused();
 	}

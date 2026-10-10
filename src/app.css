@@ -46,64 +46,6 @@ button, a { font: inherit; }
 
 .site-header { margin-bottom: clamp(1.75rem, 4vw, 3.5rem); }
 
-/* Keep tile sizing relative to the home container in both orientations. */
-.home-screen {
-	width: min(60rem, calc(100vw - 3rem));
-	container-type: inline-size;
-}
-
-.home-screen .tile-grid {
-	--grid-width: 100cqw;
-	--tile-gap: 16px;
-}
-
-.home-screen .tile[data-tile-id='email'] { grid-column: 1 / span 4; }
-
-@media (orientation: landscape) {
-	.home-screen {
-		width: min(76rem, calc(100vw - 3rem));
-		height: 100dvh;
-		margin-inline: auto;
-		padding: clamp(2rem, 6vh, 4rem) 0 clamp(1rem, 3vh, 2rem);
-		display: flex;
-		flex-direction: column;
-	}
-
-	.home-screen .site-header { flex: none; margin-bottom: clamp(1rem, 2vh, 1.5rem); }
-	.home-screen .site-header h1 { font-size: clamp(2rem, 6vh, 4rem); }
-	.home-screen .site-subtitle { margin-top: 0.75rem; }
-	.home-screen .view-viewport {
-		flex: 1;
-		min-height: 0;
-		container-type: size;
-		display: flex;
-		align-items: flex-start;
-		justify-content: center;
-	}
-	.home-screen .view-track {
-		/* Ten square columns and six rows, including their 16px gaps. */
-		width: min(100%, calc((100cqh - 80px) / 6 * 10 + 144px));
-		margin-inline: auto;
-		container-type: inline-size;
-	}
-	.home-screen .tile-grid {
-		grid-template-columns: repeat(10, minmax(0, 1fr));
-		grid-template-rows: repeat(6, calc((100cqw - 144px) / 10));
-	}
-	.home-screen .tile[data-tile-id='intro'] { grid-area: 1 / 1 / span 4 / span 4; }
-	.home-screen .tile[data-tile-id='projects'] { grid-area: 1 / 5 / span 2 / span 4; }
-	.home-screen .tile[data-tile-id='tech-stack'] { grid-area: 3 / 5 / span 2 / span 4; }
-	.home-screen .tile[data-tile-id='tools'] { grid-area: 1 / 9 / span 4 / span 2; }
-	.home-screen .tile[data-tile-id='theme'] { grid-area: 5 / 9 / span 2 / span 2; }
-	.home-screen .tile[data-tile-id='email'] { grid-area: 5 / 1 / span 2 / span 4; }
-	.home-screen .tile[data-tile-id='github'] { grid-area: 5 / 5 / span 2 / span 2; }
-	.home-screen .tile[data-tile-id='blog'] { grid-area: 5 / 7 / span 2 / span 2; }
-	.home-screen .tile { padding: clamp(0.5rem, 1.5vh, 1.25rem); gap: 0.5rem; }
-	.home-screen .tile-title { font-size: clamp(0.8rem, 2.5vh, 1.6rem); }
-	.home-screen .tile-description { font-size: clamp(0.75rem, 1.8vh, 1.12rem); }
-	.home-screen .tile[data-tile-id='intro'] .tile-title { font-size: clamp(1.2rem, 5vh, 4.5rem); }
-	.home-screen .tile[data-tile-id='intro'] .tile-description { font-size: clamp(0.75rem, 2vh, 1.45rem); }
-}
 
 .site-kicker {
 	margin: 0 0 0.35rem;
@@ -346,6 +288,120 @@ a.tile:active, button.tile:active { transform: scale(0.975); }
 		grid-template-columns: repeat(8, minmax(0, 1fr));
 		grid-auto-rows: calc((var(--grid-width) - 7 * var(--tile-gap, 8px)) / 8);
 	}
+}
+
+/* One shared spacing rhythm for the start screen; other pages keep their layout. */
+.home-screen {
+	--home-gap: clamp(10px, 1.2vw, 16px);
+	--home-gutter: clamp(20px, 4vw, 40px);
+	width: min(960px, calc(100vw - 2 * var(--home-gutter)));
+	padding: clamp(28px, 5vw, 48px) 0 40px;
+	container-type: inline-size;
+}
+
+.home-screen .site-header { margin-bottom: clamp(20px, 3vw, 28px); }
+.home-screen .site-kicker { font-size: 12px; line-height: 17px; letter-spacing: 0.16em; margin-bottom: 8px; }
+.home-screen .site-header h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.055em; }
+.home-screen .tile-grid { --grid-width: 100cqw; --tile-gap: var(--home-gap); }
+.home-screen .tile { --tile-padding: clamp(14px, 2.2cqw, 24px); padding: var(--tile-padding); gap: 8px; }
+.home-screen .tile-title { font-size: clamp(16px, 2.5cqw, 24px); line-height: 1.25; }
+.home-screen .tile-description { font-size: clamp(13px, 1.8cqw, 17px); line-height: 1.5; max-width: 32ch; }
+.home-screen .tile[data-tile-id='intro'] .tile-title { font-size: clamp(28px, 4.5cqw, 48px); }
+.home-screen .tile[data-tile-id='intro'] .tile-description { font-size: clamp(14px, 2cqw, 18px); }
+.home-screen .tile[data-tile-id='intro'] .tile-title,
+.home-screen .tile[data-tile-id='projects'] .tile-title { order: -1; }
+.home-screen .tile[data-tile-id='email'] .tile-title { font-size: clamp(13px, 1.7cqw, 20px); }
+.home-screen .folder-mark,
+.home-screen .action-mark {
+	top: calc(50% - 16px);
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: clamp(40px, 6cqw, 64px);
+}
+.home-screen .tile[data-tile-id='intro'] { grid-row: span 3; }
+.home-screen .tile[data-tile-id='tools'] { grid-column: span 4; }
+.home-screen .tile[data-tile-id='theme'] { grid-column: span 4; grid-row: span 1; }
+.home-screen .tile[data-tile-id='theme'] .tile-title { margin-left: 60px; font-size: clamp(16px, 2.5cqw, 24px); }
+.home-screen .tile[data-tile-id='theme'] { justify-content: center; }
+.home-screen .tile[data-tile-id='theme'] .action-mark { top: 50%; left: var(--tile-padding); transform: translateY(-50%); }
+
+@media (min-width: 720px) and (orientation: portrait) {
+	.home-screen .tile[data-tile-id='intro'] { grid-area: 1 / 1 / span 4 / span 4; }
+	.home-screen .tile[data-tile-id='github'] { grid-area: 1 / 5 / span 2 / span 2; }
+	.home-screen .tile[data-tile-id='blog'] { grid-area: 3 / 5 / span 2 / span 2; }
+	.home-screen .tile[data-tile-id='projects'] { grid-area: 5 / 1 / span 2 / span 4; }
+	.home-screen .tile[data-tile-id='tools'] { grid-area: 5 / 5 / span 2 / span 2; }
+	.home-screen .tile[data-tile-id='tech-stack'] { grid-area: 7 / 1 / span 2 / span 4; }
+	.home-screen .tile[data-tile-id='theme'] { grid-area: 7 / 5 / span 2 / span 2; justify-content: flex-end; }
+	.home-screen .tile[data-tile-id='theme'] .tile-title { margin-left: 0; font-size: clamp(13px, 2cqw, 22px); }
+	.home-screen .tile[data-tile-id='theme'] .action-mark { top: calc(50% - 16px); left: 50%; transform: translate(-50%, -50%); }
+	.home-screen .tile[data-tile-id='email'] { grid-area: 9 / 1 / span 2 / span 6; }
+	.home-screen .tile-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: calc((100cqw - 5 * var(--home-gap)) / 6); }
+}
+
+@media (orientation: landscape) {
+	.home-screen {
+		--home-gutter: clamp(16px, 3vw, 40px);
+		--home-padding-y: clamp(16px, 3dvh, 36px);
+		--home-heading: clamp(30px, 5dvh, 52px);
+		--home-header-height: calc(17px + 8px + var(--home-heading) * 1.05);
+		--home-header-gap: clamp(20px, 2.5dvh, 28px);
+		/* Fit six square rows to the height and ten columns to the width. */
+		--home-unit: min(
+			calc((1120px - 9 * var(--home-gap)) / 10),
+			calc((100vw - 2 * var(--home-gutter) - 9 * var(--home-gap)) / 10),
+			calc((100dvh - 2 * var(--home-padding-y) - var(--home-header-height) - var(--home-header-gap) - 5 * var(--home-gap)) / 6)
+		);
+		width: calc(10 * var(--home-unit) + 9 * var(--home-gap));
+		height: 100dvh;
+		padding: var(--home-padding-y) 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.home-screen .site-header { flex: none; margin-bottom: var(--home-header-gap); }
+	.home-screen .site-header h1 { font-size: var(--home-heading); }
+	.home-screen .view-viewport { flex: none; }
+	.home-screen .tile-grid {
+		grid-template-columns: repeat(10, minmax(0, 1fr));
+		grid-template-rows: repeat(6, var(--home-unit));
+	}
+	.home-screen .tile[data-tile-id='intro'] { grid-area: 1 / 1 / span 4 / span 4; }
+	.home-screen .tile[data-tile-id='projects'] { grid-area: 1 / 5 / span 2 / span 4; }
+	.home-screen .tile[data-tile-id='tech-stack'] { grid-area: 3 / 5 / span 2 / span 4; }
+	.home-screen .tile[data-tile-id='github'] { grid-area: 1 / 9 / span 2 / span 2; }
+	.home-screen .tile[data-tile-id='blog'] { grid-area: 3 / 9 / span 2 / span 2; }
+	.home-screen .tile[data-tile-id='email'] { grid-area: 5 / 1 / span 2 / span 4; }
+	.home-screen .tile[data-tile-id='tools'] { grid-area: 5 / 5 / span 2 / span 4; }
+	.home-screen .tile[data-tile-id='theme'] { grid-area: 5 / 9 / span 2 / span 2; justify-content: flex-end; }
+	.home-screen .tile[data-tile-id='theme'] .tile-title { margin-left: 0; font-size: clamp(13px, 2cqw, 22px); }
+	.home-screen .tile[data-tile-id='theme'] .action-mark { top: calc(50% - 12px); left: 50%; transform: translate(-50%, -50%); }
+	.home-screen .tile { --tile-padding: clamp(10px, 2cqw, 22px); gap: 6px; }
+	.home-screen .tile-title { font-size: clamp(13px, 2cqw, 22px); }
+	.home-screen .tile-description { font-size: clamp(12px, 1.5cqw, 16px); line-height: 1.4; }
+	.home-screen .tile[data-tile-id='intro'] .tile-title { font-size: clamp(24px, 4cqw, 44px); }
+	.home-screen .tile[data-tile-id='intro'] .tile-description { font-size: clamp(13px, 1.7cqw, 18px); }
+	.home-screen .folder-mark,
+	.home-screen .action-mark { top: calc(50% - 12px); font-size: clamp(24px, 6cqw, 64px); }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+	.home-screen .folder-mark,
+	.home-screen .action-mark,
+	.home-screen .tile[data-tile-id='theme'] .action-mark { top: calc(50% - 20px); }
+}
+
+@media (orientation: landscape) and (max-height: 360px) {
+	.home-screen { --home-padding-y: 12px; --home-heading: 24px; --home-header-gap: 14px; }
+	.home-screen .tile { --tile-padding: 7px; gap: 4px; }
+	.home-screen .tile-title,
+	.home-screen .tile[data-tile-id='email'] .tile-title,
+	.home-screen .tile[data-tile-id='theme'] .tile-title { font-size: 11px; }
+	.home-screen .tile-description,
+	.home-screen .tile[data-tile-id='intro'] .tile-description { font-size: 11px; line-height: 1.35; }
+	.home-screen .tile[data-tile-id='intro'] .tile-title { font-size: 20px; }
+	.home-screen .folder-mark,
+	.home-screen .action-mark { font-size: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

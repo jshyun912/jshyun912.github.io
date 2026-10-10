@@ -40,7 +40,7 @@ test('browser back from a tool returns to its folder', async ({ page }) => {
 
 test('folder navigation restores keyboard focus', async ({ page }) => {
 	await page.goto('/');
-	for (const id of ['email', 'github', 'blog', 'tools']) {
+	for (const id of ['intro', 'projects', 'tech-stack', 'email', 'github', 'blog', 'tools']) {
 		await page.keyboard.press('Tab');
 		await expect(page.locator(`[data-tile-id="${id}"]`)).toBeFocused();
 	}

@@ -2,7 +2,6 @@
 	import { onMount, tick } from 'svelte';
 	import FolderView from '$lib/components/FolderView.svelte';
 	import TileGrid from '$lib/components/TileGrid.svelte';
-	import { applyTheme, browserStorage, readInitialTheme } from '$lib/theme/theme';
 	import { homeTiles } from '$lib/tiles/home';
 	import { createFolderNavigation, findFolder } from '$lib/navigation/folder';
 	import type { FolderTile } from '$lib/tiles/types';
@@ -66,10 +65,6 @@
 	}
 
 	onMount(() => {
-		applyTheme(
-			readInitialTheme(browserStorage(), window.matchMedia.bind(window)),
-			document.documentElement
-		);
 		syncFromUrl();
 		const handlePopState = () => { void syncFromUrl(true); };
 		window.addEventListener('popstate', handlePopState);

@@ -1,5 +1,6 @@
 import type { Tile } from './types';
 import { validateTiles } from './validate';
+import SkillTileContent from '$lib/components/SkillTileContent.svelte';
 
 export const homeTiles: Tile[] = [
 	{
@@ -8,7 +9,8 @@ export const homeTiles: Tile[] = [
 		title: 'jshyun912',
 		size: 'large',
 		color: 'accent',
-		description: '개발자 포트폴리오입니다. 이곳에 자신을 소개하는 짧은 글을 적어 주세요.'
+		description: '개발자 포트폴리오입니다. 이곳에 자신을 소개하는 짧은 글을 적어 주세요.',
+		href: '/portfolio/#about'
 	},
 	{
 		type: 'standard',
@@ -16,14 +18,17 @@ export const homeTiles: Tile[] = [
 		title: '프로젝트',
 		size: 'wide',
 		color: 'blue',
-		description: '작업물을 추가할 공간입니다.'
+		description: '작업물을 추가할 공간입니다.',
+		href: '/portfolio/#projects'
 	},
 	{
 		type: 'standard',
 		id: 'tech-stack',
+		contentComponent: SkillTileContent,
 		title: '기술 스택',
 		size: 'wide',
-		color: 'slate'
+		color: 'slate',
+		href: '/portfolio/#skills'
 	},
 	{
 		type: 'standard',
