@@ -316,7 +316,7 @@ a.tile:active, button.tile:active { transform: scale(0.975); }
 	top: calc(50% - 16px);
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: clamp(40px, 6cqw, 64px);
+	font-size: clamp(48px, 7.5cqw, 80px);
 }
 .home-screen .tile[data-tile-id='intro'] { grid-row: span 3; }
 .home-screen .tile[data-tile-id='tools'] { grid-column: span 4; }
@@ -382,7 +382,7 @@ a.tile:active, button.tile:active { transform: scale(0.975); }
 	.home-screen .tile[data-tile-id='intro'] .tile-title { font-size: clamp(24px, 4cqw, 44px); }
 	.home-screen .tile[data-tile-id='intro'] .tile-description { font-size: clamp(13px, 1.7cqw, 18px); }
 	.home-screen .folder-mark,
-	.home-screen .action-mark { top: calc(50% - 12px); font-size: clamp(24px, 6cqw, 64px); }
+	.home-screen .action-mark { top: calc(50% - 12px); font-size: clamp(30px, 7.5cqw, 80px); }
 }
 
 @media (orientation: landscape) and (max-height: 500px) {
@@ -401,7 +401,7 @@ a.tile:active, button.tile:active { transform: scale(0.975); }
 	.home-screen .tile[data-tile-id='intro'] .tile-description { font-size: 11px; line-height: 1.35; }
 	.home-screen .tile[data-tile-id='intro'] .tile-title { font-size: 20px; }
 	.home-screen .folder-mark,
-	.home-screen .action-mark { font-size: 20px; }
+	.home-screen .action-mark { font-size: 26px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
